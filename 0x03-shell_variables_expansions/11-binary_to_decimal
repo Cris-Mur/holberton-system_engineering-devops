@@ -1,2 +1,3 @@
 #!/bin/bash
-echo $((ibase=2;$BINARY))
+BINARY=10100111001
+echo $((2#;$BINARY))
