@@ -4,5 +4,5 @@
 v=0
 while [[ $v -le 9 ]]; do
 	echo "Holberton School"
-	v=$(($v + 1))
+	v=$((v + 1))
 done

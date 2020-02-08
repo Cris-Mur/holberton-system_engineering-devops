@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script is displaying "Holberton School" 10 times
+
+v=0
+while [ $v -le 10 ]; do
+    echo "Holberton School"
+    if [ $v -eq 9 ]
+    then
+	echo "Hi"
+    fi
+    v=$((v + 1))
+done
