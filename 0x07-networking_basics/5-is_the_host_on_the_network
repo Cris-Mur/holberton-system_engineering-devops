@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# ping in 5 time of argv[1]
-ping -c 5 $1

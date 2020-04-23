@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# This script is displaying "Holberton School" 10 times
-
-v=0
-
-until [ $v = 10 ]; do
-      echo "Holberton School"
-      v=$((v + 1))
-done
