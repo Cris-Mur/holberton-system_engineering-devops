@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Script that install nginx web server
+
+sudo apt-get -y update && sudo apt-get -y upgrade
+
+sudo apt-get install -y nginx
+nginx -v
+
+echo "Holberton School" | sudo tee /var/www/html/index.html
+sudo sed -i 's/server_name _;/server_name _;\n\trewrite ^\/redirect_me http:\/\/cris-mur.tech permanent;/' /etc/nginx/sites-available/default
+sudo service nginx start
