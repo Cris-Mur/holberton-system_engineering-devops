@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Script that use Scure copy to send files to remote server
 MIN_ARGS=3
 
 if [ $# -lt $MIN_ARGS ]; then
