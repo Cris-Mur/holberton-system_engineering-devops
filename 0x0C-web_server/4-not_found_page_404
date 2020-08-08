@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Script that install nginx web server
+
+sudo apt-get -y update && sudo apt-get -y upgrade
+
+sudo apt-get install -y nginx
+nginx -v
+
+echo "Holberton School" | sudo tee /var/www/html/index.html
+
+#file to configure
+CONF_F="/etc/nginx/sites-available/default"
+# REDIR
+sudo sed -i 's/server_name _;/server_name _;\n\trewrite ^\/redirect_me http:\/\/cris-mur.tech permanent;/' $CONF_F
+# 404
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/Own_404.html
+FOUND="server_name _;\n\n\terror_page 404 \/Own_404.html;\n\tlocation = \/Own_404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}\n"
+sudo sed -i "s/server_name _;/$FOUND/g" $CONF_F
+sudo nginx -t
+sudo service nginx restart
