@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Install and setup HAproxy
+sudo apt-get -y update
+sudo apt-get -y upgrade
+
+sudo apt-get install -y haproxy
+
+CNF="\
+listen http-in
+	bind *:80
+	mode http
+	balance roundrobin
+	server 1263-web-01 35.231.247.228:80 check
+	server 1263-web-02 35.237.210.188:80 check
+"
+
+echo "$CNF" | sudo tee /etc/haproxy/haproxy.cfg
+echo "ENABLED=1" | sudo tee /etc/default/haproxy
+sudo service haproxy restart
