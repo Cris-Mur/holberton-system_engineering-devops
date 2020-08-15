@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Setup custom http response header
+sudo apt-get install nginx -y
+echo "Holberton School" | sudo tee  /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
+coso0="server_name _;\n\trewrite ^\/redirect_me google.com permanent;"
+coso1="\n\tadd_header X-Served-By \$hostname;"
+coso2="\n\terror_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\troot \/usr\/share\/nginx\/html;\n\tinternal;\n\t}"
+sudo sed -i "s/server_name _;/$coso0$coso1$coso2/" /etc/nginx/sites-enabled/default
+sudo service nginx reload
+sudo service nginx restart
