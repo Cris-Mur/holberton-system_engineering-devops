@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ request to use API """
 if __name__ == "__main__":
-    import sys
     import requests
+    import sys
 
     Uid = int(sys.argv[1])
     url = 'https://jsonplaceholder.typicode.com/users/{}'.format(Uid)
