@@ -14,18 +14,15 @@ if __name__ == "__main__":
     for usr in all_Users.json():
         User_tbl[usr.get('id')] = []
         name = usr.get('username')
-        print(name)
         for i in all_TODO.json():
             if i.get('userId') == usr.get('id'):
+                tasks_['username'] = name
                 tasks_['task'] = i.get("title")
                 tasks_['completed'] = i.get("completed")
-                tasks_['username'] = name
-                print(tasks_.get('username'))
                 listoe.append(tasks_.copy())
                 task_ = {}
         User_tbl[usr.get('id')] = listoe
         listoe = []
-
 
     with open("todo_all_employees.json", 'w', newline='') as son:
         json.dump(User_tbl, son)
